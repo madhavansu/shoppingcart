@@ -2,12 +2,15 @@
   "name": "shoppingcart",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://madhavansu.github.io/shoppingcart/",
   "main": "index.js",
   "scripts": {
     "build": "webpack-dev-server --env=development --hot",
     "build-dist": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --config ./build/webpack.config.js",
-    "build-prod": "NODE_ENV=production webpack --config ./build/webpack.config.js --mode=production"
+    "build-prod": "NODE_ENV=production webpack --config ./build/webpack.config.js --mode=production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +28,7 @@
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "file-loader": "^6.0.0",
+    "gh-pages": "^2.2.0",
     "html-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
