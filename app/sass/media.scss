@@ -1,0 +1,18 @@
+/* 
+*   Created by Madhavan 22/03/2020
+**/
+
+$break-small: 768px;
+$break-large: 769px;
+
+$phones: "only screen and (max-width: 768px)";
+$desktops: "only screen and (min-width: 769px)";
+
+@mixin respond-to($media) {
+    @if $media == handhelds {
+      @media only screen and (max-width: $break-small) { @content; }
+    }
+    @else if $media == wide-screens {
+      @media only screen and (min-width: $break-large) { @content; }
+    }
+}

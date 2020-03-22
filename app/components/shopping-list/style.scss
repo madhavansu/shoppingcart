@@ -1,0 +1,67 @@
+/* 
+*   Created by Madhavan 22/03/2020
+**/
+@import '../../sass/colors.scss';
+@import '../../sass/media.scss';
+
+ul {
+    &.shopping-list {
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: left;
+        margin: 0;
+        padding: 0;
+
+        li {
+            flex-basis: 16%;
+            display:flex;
+            flex-direction: column;
+            margin: 2%;
+            align-items: center;
+            @include respond-to(handhelds) { flex-basis: 46%; }
+            @include respond-to(wide-screens) { flex-basis: 16%; }
+
+            img {
+                border-radius: 3px;
+                box-shadow: 1px 1px 3px rgba(0,0,0,0.2); 
+                width: 100%;
+            }
+
+            div {
+                align-self: flex-start;
+                margin-top: 20px;
+                span {
+                    font-weight: bold;
+                    text-align: left;
+                    padding-right: 5px;
+
+                    &:nth-child(2) {
+                        color: $cart-text-grey;
+                        text-decoration: line-through;
+                    }
+
+                    &:nth-child(3) {
+                        color: $cart-text-green;
+                    }
+                }
+                
+            }
+
+            button {
+                margin-top: 20px;
+                padding: 10px; 
+                background-color: $cart-button-color;
+                border-radius: 30px;
+                align-self: center;
+                font-weight: bold;
+                outline: none;
+            }
+            
+        }
+    }
+}
+
+
+

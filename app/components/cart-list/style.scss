@@ -1,0 +1,165 @@
+/* 
+*   Created by Madhavan 22/03/2020
+**/
+@import '../../sass/colors.scss';
+@import '../../sass/media.scss';
+
+div {
+    .cart {
+        display: flex;
+        align-items: flex-start;
+        justify-content: left;
+        flex-direction: row;
+        flex-basis: 100%;
+        @include respond-to(handhelds) { flex-direction: column; }
+        @include respond-to(wide-screens) { flex-direction: row; }
+
+        ul {
+            &.cart-list {
+                display: flex;
+                list-style:none;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: left;
+                
+                margin: 0;
+                padding: 0;
+                flex-basis: 75%;
+                @include respond-to(handhelds) { flex-basis: 100%; }
+                @include respond-to(wide-screens) { flex-basis: 75%; }
+
+                li {
+                    flex-basis: 100%;
+                    display:flex;
+                    flex-direction: row;
+                    align-items: center; 
+                    border: 1px solid $primary-black;
+                    background-color: $cart-item-bg-color;
+                    margin: 2% 2% 0 2%;
+
+                    img {
+                        border-radius: 3px;
+                        box-shadow: 1px 1px 3px rgba(0,0,0,0.2); 
+                        width: 10%;
+                        margin: 20px;
+                        @include respond-to(handhelds) { width: 30%; margin: 10px;}
+                        @include respond-to(wide-screens) { width: 10%; margin: 20px;}
+                    }
+
+                    div {
+                        &.cart-items {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center; 
+                            flex-basis: 100%;
+                            @include respond-to(handhelds) { flex-direction: column; align-items: flex-start; }
+                            @include respond-to(wide-screens) { flex-direction: row; align-items: center; }
+                        
+                            div {
+                                flex-basis: 33.33%;
+                                @include respond-to(handhelds) { margin: 0 0 5px 0; }
+
+                                &.item-price{
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: flex-start;
+
+                                    div {
+
+                                        span {
+                                            font-weight: bold;
+                                            text-align: left;
+                                            padding-right: 5px;
+
+                                            &:nth-child(2) {
+                                                color: $cart-text-grey;
+                                                text-decoration: line-through;
+                                            }
+                        
+                                            &:nth-child(3) {
+                                                color: $cart-text-green;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &.cart-counter{
+                                    display: flex;
+                                    align-items: center;
+
+                                    span {
+                                        border: 1px solid $cart-text-grey;
+                                        font-weight: bold;
+                                        padding: 10px;
+                                        margin: 0 15px;
+
+                                        
+                                    }
+
+                                    .price-icon{
+                                        color: $cart-text-grey;
+                                    }
+                                }
+
+                            }
+                            
+                            .button {
+                                font-weight: bold;
+                                text-decoration: none;
+                                color: #000;
+
+                                @include respond-to(handhelds) { margin-bottom: 10px;}
+                                @include respond-to(wide-screens) { margin-bottom: 0; }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        div {
+            &.price-details {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 25%;
+                border: 1px solid $primary-black;
+                background-color: $cart-item-bg-color;
+                margin: 1.5% 1.5% 0 0;
+
+                @include respond-to(handhelds) { flex-basis: 100%; margin: 2%; width: 96%;}
+                @include respond-to(wide-screens) { flex-basis: 25%; margin: 1.5% 1.5% 0 0;}
+
+                div {
+                    display: flex;
+                    padding: 15px;
+
+                    &:nth-child(1) {
+                        border-bottom: 1px solid $cart-text-grey;
+                    }
+
+                    &:nth-child(3) {
+                        border-bottom: 1px solid $primary-black;
+                    }
+
+                    span {
+                        flex-basis: 33.33%;
+                    };
+                }
+                
+            }
+        }
+    }
+
+    button {
+        padding: 10px; 
+        background-color: $cart-button-color;
+        border-radius: 30px;
+        align-self: center;
+        font-weight: bold;
+        margin:0 auto;
+        display:block;
+    }
+
+}
+
+
