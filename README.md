@@ -10,7 +10,7 @@ Application performs the functionality of shopping cart behaviors
     remove from cart, 
     dynamic cart update,
     calculate total cart value, 
-    discounts, 
+    calculate total cart discounts, 
     validate existing cart item,
     total amount payable,
     responsive design for mobile and desktop versions,
@@ -18,10 +18,14 @@ Application performs the functionality of shopping cart behaviors
     calculations,
     data persistance with state management,
     event management,
+    search functionality,
+    increase or decrease the count of cart items,
+    sort by discounted price ascending and descending 
+    sort by discounts descending
 
 ## Technical Implementations
     fetch API,
-    sass,
+    sass scss,
     es6,
     css3,
     media queries,
@@ -31,6 +35,7 @@ Application performs the functionality of shopping cart behaviors
     local web fonts,
     fontawesome for icons,
     react,
+    css, js, font, image bundler using webpack,
 
 ## Install
 
