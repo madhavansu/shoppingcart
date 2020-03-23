@@ -9,7 +9,7 @@ class ShoppingListItem extends React.Component {
         const {item ,i} = this.props;
         
         return  <li className="list-item" key={i}>
-                    <img src={item.img_url} />
+                    <img src={item.img_url} alt="shopping" />
                     <div>{item.name}</div>
                     <div>
                         <span>₹{item.price - (item.price * (item.discount/100))}</span>&nbsp;&nbsp;

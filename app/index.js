@@ -22,6 +22,7 @@ class AdobeShopping extends React.Component {
             cartItems: [],
             listItems: [],
             displayItems: [],
+            displayCartItems: [],
         };
         this.updateShowCart = this.updateShowCart.bind(this);
         this.addToCart = this.addToCart.bind(this);
@@ -68,7 +69,7 @@ class AdobeShopping extends React.Component {
 
     updateShowCart(bool) {
         this.setState((state, props) => {
-            return {showCart: bool};
+            return {showCart: bool, displayCartItems: [], displayItems: []};
         });
     }
 
@@ -91,13 +92,11 @@ class AdobeShopping extends React.Component {
         let cartItems = this.state.cartItems.filter((item, i) => {
             return item.id != removeItem.id;
         })
-
         this.setState((prevState, props) => {
-            return {cartItems: cartItems};
+            return {cartItems: cartItems, displayCartItems: cartItems};
         }, function() {
             // callback
         });
-
     }
 
     sortListItems(by) {
@@ -120,20 +119,34 @@ class AdobeShopping extends React.Component {
 
     searchCart(searchValue) {
         let searchItems = [];
-        if(this.state.showCart) {
-            searchItems = this.state.cartItems.filter((item, i) => {
-                return item.name.toLowerCase().includes(searchValue.toLowerCase());
-            })
+        if(searchValue != '') {
+            if(this.state.showCart) {
+                searchItems = this.state.cartItems.filter((item, i) => {
+                    return item.name.toLowerCase().includes(searchValue.toLowerCase());
+                })
+                this.setState((prevState, props) => {
+                    return {displayCartItems: searchItems};
+                }, function() {
+                    // callback
+                });
+            } else {
+                searchItems = this.state.listItems.filter((item, i) => {
+                    return item.name.toLowerCase().includes(searchValue.toLowerCase());
+                })
+
+                this.setState((prevState, props) => {
+                    return {displayItems: searchItems};
+                }, function() {
+                    // callback
+                });
+            }
         } else {
-            searchItems = this.state.listItems.filter((item, i) => {
-                return item.name.toLowerCase().includes(searchValue.toLowerCase());
-            })
+            this.setState((prevState, props) => {
+                return {displayItems: [], displayCartItems: []};
+            }, function() {
+                // callback
+            });
         }
-        this.setState((prevState, props) => {
-            return {displayItems: searchItems};
-        }, function() {
-            // callback
-        });
     }
 
     render() {
@@ -142,7 +155,7 @@ class AdobeShopping extends React.Component {
                     
                     <div className="content">
                         {
-                            this.state.showCart ? <CartList cartItems={this.state.displayItems.length > 0 ? this.state.displayItems : this.state.cartItems } removeFromCart={this.removeFromCart} updateShowCart={this.updateShowCart} /> : 
+                            this.state.showCart ? <CartList cartItems={this.state.displayCartItems.length > 0 ? this.state.displayCartItems : this.state.cartItems } removeFromCart={this.removeFromCart} updateShowCart={this.updateShowCart} /> : 
                             <div>
                                 {this.state.listItems.length < 1 ? <FontAwesomeIcon icon={faSpinner} className="fa-spin" size="2x" /> : null}
                                 <SortOptions sortListItems={this.sortListItems} />
