@@ -20,12 +20,14 @@ class AdobeShopping extends React.Component {
         this.state = {
             showCart: false,
             cartItems: [],
-            listItems: []
+            listItems: [],
+            displayItems: [],
         };
         this.updateShowCart = this.updateShowCart.bind(this);
         this.addToCart = this.addToCart.bind(this);
         this.removeFromCart = this.removeFromCart.bind(this);
         this.sortListItems = this.sortListItems.bind(this);
+        this.searchCart = this.searchCart.bind(this);
     }
 
     componentDidMount() {
@@ -114,12 +116,24 @@ class AdobeShopping extends React.Component {
         }, function() {
             // callback
         });
+    }
 
+    searchCart(searchValue) {
+
+        let searchItems = this.state.listItems.filter((item, i) => {
+            return item.name.toLowerCase().includes(searchValue.toLowerCase());
+        })
+
+        this.setState((prevState, props) => {
+            return {displayItems: searchItems};
+        }, function() {
+            // callback
+        });
     }
 
     render() {
         return <div>
-                    <Header updateShowCart={this.updateShowCart} cartSize={this.state.cartItems.length}/>
+                    <Header searchCart={this.searchCart} updateShowCart={this.updateShowCart} cartSize={this.state.cartItems.length}/>
                     
                     <div className="content">
                         {
@@ -127,7 +141,7 @@ class AdobeShopping extends React.Component {
                             <div>
                                 {this.state.listItems.length < 1 ? <FontAwesomeIcon icon={faSpinner} className="fa-spin" size="2x" /> : null}
                                 <SortOptions sortListItems={this.sortListItems} />
-                                <ShoppingList listItems={this.state.listItems} addToCart={this.addToCart} />
+                                <ShoppingList listItems={this.state.displayItems.length > 0 ? this.state.displayItems : this.state.listItems} addToCart={this.addToCart} />
                             </div> 
                         }
                     </div>
