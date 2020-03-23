@@ -6,36 +6,44 @@ Application performs the functionality of shopping cart behaviors
 @email: madhavan.manian@gmail.com
 
 ## Implemented Features
-    add to cart, 
-    remove from cart, 
-    dynamic cart update,
-    calculate total cart value, 
-    calculate total cart discounts, 
-    validate existing cart item,
-    total amount payable,
-    responsive design for mobile and desktop versions,
-    flow implementation,
-    calculations,
-    data persistance with state management,
-    event management,
-    search functionality,
-    increase or decrease the count of cart items,
-    sort by discounted price ascending and descending 
-    sort by discounts descending
+    Add to cart, 
+    Remove from cart, 
+    Dynamic cart update,
+    Calculate total cart value, 
+    Calculate total cart discounts, 
+    Validate existing cart item,
+    Total amount payable,
+    Responsive design for mobile and desktop versions,
+    Flow implementation,
+    Calculations,
+    Data persistance with state management,
+    Event management,
+    Search functionality,
+    Increase or decrease the count of cart items,
+    Sort by discounted price ascending and descending,
+    Sort by discounts descending
 
 ## Technical Implementations
-    fetch API,
-    sass scss,
-    es6,
-    css3,
-    media queries,
-    webpack with bundling,
-    css minifying,
-    js minifying ,
-    local web fonts,
-    fontawesome for icons,
-    react,
-    css, js, font, image bundler using webpack,
+    Used Fetch to fetch the api from endpoint,
+    Implemented the cashing mechanism to maintain the records locally for the session. 
+        there will be only once the api will be called, to re-fetch from endpoint close and reopen the browser tab.
+    Used SASS, SCSS for styling,
+    Implemented es6 feature such as Arrow function, filter, map, some, let const, spread[...] operator etc.,
+    Used CSS3 styling,
+    Used media queries for responsiveness,
+    Used Webpack for building and bundling,
+    Javascript and CSS minifying using loaders and bundlers,
+    Used Verdana font locally,
+    Used Fontawesome for icons,
+    Used react for separation of modules and components,
+    Used bundlers for bundling CSS, JS, fonts and images,
+
+## Components
+    Search Component
+    Cart Icon Component
+    Sort Component
+    Shopping list Component
+    Header
 
 ## Install
 
