@@ -13,7 +13,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const cartSize = this.props.cartSize;
+    const cartSize = this.props.cartItems.length > 0 ? this.props.cartItems.map(item => item.cartCount).reduce((prev, next) => prev + next) : 0;
     return <nav>
                 <ul className="primary-nav">
                     <li className="left" onClick={() => this.props.updateShowCart(false)}><FontAwesomeIcon icon={faStar} className="logo" size="2x" /></li>

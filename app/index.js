@@ -91,7 +91,7 @@ class AdobeShopping extends React.Component {
                 // Append to previous cart items
                 return {cartItems: [...prevState.cartItems, item]};
             } else {
-                alert("Item exist in the cart!");
+                this.increaseCartCount(item)
             }
         }, function(){
             // callback
@@ -116,10 +116,8 @@ class AdobeShopping extends React.Component {
         this.setState((prevState, props) => {
             let items = prevState.cartItems.map( item => {
                 if(itemToChange.id == item.id) {
-                    item.cartCount = item.cartCount - 1;
-                    if(item.cartCount < 1) {
-                        alert("Please remove item from cart instead!")
-                        item.cartCount = 0;
+                    if(item.cartCount > 1) {
+                        item.cartCount = item.cartCount - 1;
                     }
                 }
                 return item;
@@ -194,7 +192,7 @@ class AdobeShopping extends React.Component {
 
     render() {
         return <div>
-                    <Header searchCart={this.searchCart} updateShowCart={this.updateShowCart} cartSize={this.state.cartItems.length}/>
+                    <Header searchCart={this.searchCart} updateShowCart={this.updateShowCart} cartItems={this.state.cartItems}/>
                     
                     <div className="content">
                         {
