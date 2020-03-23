@@ -15,13 +15,13 @@ class CartList extends React.Component {
 
     render() {
         const cartItems = this.props.cartItems;
-        const cartValue = cartItems.length > 0 ? cartItems.map(item => item.price).reduce((prev, next) => prev + next) : 0;
-        const cartDiscountValue = cartItems.length > 0 ?  cartItems.map(item => item.discountedPrice).reduce((prev, next) => prev + next) : 0;
+        const cartValue = cartItems.length > 0 ? cartItems.map(item => item.price * item.cartCount).reduce((prev, next) => prev + next) : 0;
+        const cartDiscountValue = cartItems.length > 0 ?  cartItems.map(item => item.discountedPrice * item.cartCount).reduce((prev, next) => prev + next) : 0;
 
         return  <div>
                     <div className="cart">
                         <ul className="cart-list">
-                            { cartItems.length > 0 ? cartItems.map((item, i) => <CartListItem item={item} i={i} removeFromCart={() => this.props.removeFromCart(item)} /> ) : <li>No cart items available</li>}
+                            { cartItems.length > 0 ? cartItems.map((item, i) => <CartListItem increaseCartCount={() => this.props.increaseCartCount(item)} decreaseCartCount={() => this.props.decreaseCartCount(item)} item={item} i={i} removeFromCart={() => this.props.removeFromCart(item)} /> ) : <li>No cart items available</li>}
                         </ul>
                         <div className="price-details">
                             <div>PRICE DETAILS</div>

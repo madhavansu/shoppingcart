@@ -21,7 +21,7 @@ class CartListItem extends React.Component {
                                 <span>{item.discount}% off</span>
                             </div>
                         </div>
-                        <div className="cart-counter"> <FontAwesomeIcon className="price-icon" icon={faMinusCircle} size="2x" /> <span>1</span> <FontAwesomeIcon className="price-icon" icon={faPlusCircle} size="2x" /></div>
+                        <div className="cart-counter"> <FontAwesomeIcon onClick={() => this.props.decreaseCartCount(item)} className="price-icon" icon={faMinusCircle} size="2x" /> <span>{item.cartCount}</span> <FontAwesomeIcon onClick={() => this.props.increaseCartCount(item)} className="price-icon" icon={faPlusCircle} size="2x" /></div>
                         <a href="#" className="button" onClick={() => this.props.removeFromCart(item)}>REMOVE</a>
                     </div>
                 </li>

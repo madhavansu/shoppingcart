@@ -29,6 +29,8 @@ class AdobeShopping extends React.Component {
         this.removeFromCart = this.removeFromCart.bind(this);
         this.sortListItems = this.sortListItems.bind(this);
         this.searchCart = this.searchCart.bind(this);
+        this.increaseCartCount = this.increaseCartCount.bind(this);
+        this.decreaseCartCount = this.decreaseCartCount.bind(this);
     }
 
     componentDidMount() {
@@ -49,6 +51,13 @@ class AdobeShopping extends React.Component {
             .then((resp) => resp.json())
             .then((items) => {
                 console.log(items)
+
+                items = items.map( item => { 
+                    item.discountedPrice = item.price - (item.price * (item.discount/100));
+                    item.cartCount = 0;
+                    return item;
+                })
+
                 this.setState((state, props) => {
                     return {listItems: items};
                 });
@@ -78,11 +87,45 @@ class AdobeShopping extends React.Component {
             // Add to cart only if an item does not exist in the cart
             if(!prevState.cartItems.some(cartItem => cartItem.id === item.id)) {
                 item.discountedPrice = item.price - (item.price * (item.discount/100));
+                item.cartCount = item.cartCount + 1;
                 // Append to previous cart items
                 return {cartItems: [...prevState.cartItems, item]};
             } else {
                 alert("Item exist in the cart!");
             }
+        }, function(){
+            // callback
+        });
+    }
+
+    increaseCartCount(itemToChange) {
+        this.setState((prevState, props) => {
+            let items = prevState.cartItems.map( item => {
+                if(itemToChange.id == item.id)
+                    item.cartCount = item.cartCount + 1;
+                return item;
+            })
+            return {cartItems: items};
+
+        }, function(){
+            // callback
+        });
+    }
+
+    decreaseCartCount(itemToChange) {
+        this.setState((prevState, props) => {
+            let items = prevState.cartItems.map( item => {
+                if(itemToChange.id == item.id) {
+                    item.cartCount = item.cartCount - 1;
+                    if(item.cartCount < 1) {
+                        alert("Please remove item from cart instead!")
+                        item.cartCount = 0;
+                    }
+                }
+                return item;
+            })
+            return {cartItems: items};
+
         }, function(){
             // callback
         });
@@ -102,7 +145,7 @@ class AdobeShopping extends React.Component {
     sortListItems(by) {
         let sortedList = []
         if(by=="low" || by=="high") {
-            sortedList = this.state.listItems.sort((a, b) => a.price - b.price)
+            sortedList = this.state.listItems.sort((a, b) => a.discountedPrice - b.discountedPrice)
             if(by=="high")
                 sortedList = sortedList.reverse()
         } else if(by=="discount") {
@@ -155,7 +198,7 @@ class AdobeShopping extends React.Component {
                     
                     <div className="content">
                         {
-                            this.state.showCart ? <CartList cartItems={this.state.displayCartItems.length > 0 ? this.state.displayCartItems : this.state.cartItems } removeFromCart={this.removeFromCart} updateShowCart={this.updateShowCart} /> : 
+                            this.state.showCart ? <CartList increaseCartCount={this.increaseCartCount} decreaseCartCount={this.decreaseCartCount} cartItems={this.state.displayCartItems.length > 0 ? this.state.displayCartItems : this.state.cartItems } removeFromCart={this.removeFromCart} updateShowCart={this.updateShowCart} /> : 
                             <div>
                                 {this.state.listItems.length < 1 ? <FontAwesomeIcon icon={faSpinner} className="fa-spin" size="2x" /> : null}
                                 <SortOptions sortListItems={this.sortListItems} />
