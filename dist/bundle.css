@@ -61,6 +61,18 @@ nav ul li .badge {
   margin-top: -20px;
   color: #fff;
 }
+div .text-line {
+  background-color: transparent;
+  color: #eeeeee;
+  outline: none;
+  outline-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #eeeeee 1px;
+  padding: 3px 10px;
+  font-size: 18px;
+}
 /* 
 *   Created by Madhavan 22/03/2020
 **/
