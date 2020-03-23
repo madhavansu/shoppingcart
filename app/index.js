@@ -119,11 +119,16 @@ class AdobeShopping extends React.Component {
     }
 
     searchCart(searchValue) {
-
-        let searchItems = this.state.listItems.filter((item, i) => {
-            return item.name.toLowerCase().includes(searchValue.toLowerCase());
-        })
-
+        let searchItems = [];
+        if(this.state.showCart) {
+            searchItems = this.state.cartItems.filter((item, i) => {
+                return item.name.toLowerCase().includes(searchValue.toLowerCase());
+            })
+        } else {
+            searchItems = this.state.listItems.filter((item, i) => {
+                return item.name.toLowerCase().includes(searchValue.toLowerCase());
+            })
+        }
         this.setState((prevState, props) => {
             return {displayItems: searchItems};
         }, function() {
@@ -137,7 +142,7 @@ class AdobeShopping extends React.Component {
                     
                     <div className="content">
                         {
-                            this.state.showCart ? <CartList cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} updateShowCart={this.updateShowCart} /> : 
+                            this.state.showCart ? <CartList cartItems={this.state.displayItems.length > 0 ? this.state.displayItems : this.state.cartItems } removeFromCart={this.removeFromCart} updateShowCart={this.updateShowCart} /> : 
                             <div>
                                 {this.state.listItems.length < 1 ? <FontAwesomeIcon icon={faSpinner} className="fa-spin" size="2x" /> : null}
                                 <SortOptions sortListItems={this.sortListItems} />
