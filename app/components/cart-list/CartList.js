@@ -21,7 +21,7 @@ class CartList extends React.Component {
         return  <div>
                     <div className="cart">
                         <ul className="cart-list">
-                            { cartItems.length > 0 ? cartItems.map((item, i) => <CartListItem increaseCartCount={() => this.props.increaseCartCount(item)} decreaseCartCount={() => this.props.decreaseCartCount(item)} item={item} i={i} removeFromCart={() => this.props.removeFromCart(item)} /> ) : <li>No cart items available</li>}
+                            { cartItems.length > 0 ? cartItems.map((item, i) => <CartListItem key={i} increaseCartCount={() => this.props.increaseCartCount(item)} decreaseCartCount={() => this.props.decreaseCartCount(item)} item={item} i={i} removeFromCart={() => this.props.removeFromCart(item)} /> ) : <li>No cart items available</li>}
                         </ul>
                         <div className="price-details">
                             <div>PRICE DETAILS</div>

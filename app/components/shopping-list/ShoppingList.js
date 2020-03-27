@@ -15,7 +15,7 @@ class ShoppingList extends React.Component {
         const listItems = this.props.listItems;
 
         return  <ul className="shopping-list">
-                    {listItems.map((item, i) => <ShoppingListItem addToCart={() => this.props.addToCart(item)} item={item} i={i}/>)}
+                    {listItems.map((item, i) => <ShoppingListItem addToCart={() => this.props.addToCart(item)} item={item} i={i} key={i}/>)}
                 </ul>;
     }
 }
