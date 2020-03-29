@@ -7,22 +7,20 @@ import Search from '../search/Search';
 /* 
 *   Created by Madhavan 22/03/2020
 **/
-class Header extends React.Component {
-  constructor(props) {
-      super(props);
-  }
-
-  render() {
-    const cartSize = this.props.cartItems.length > 0 ? this.props.cartItems.map(item => item.cartCount).reduce((prev, next) => prev + next) : 0;
-    return <nav>
-                <ul className="primary-nav">
-                    <li className="left" onClick={() => this.props.updateShowCart(false)}><FontAwesomeIcon icon={faStar} className="logo" size="2x" /></li>
-                    
-                    <li className="right"> <Search searchCart={this.props.searchCart} /> </li>
-                    <li className="right" onClick={() => this.props.updateShowCart(true)}><FontAwesomeIcon icon={faShoppingCart} size="2x" className="badge" /><span className="cart-size">{cartSize}</span></li>
-                </ul>
-            </nav>; 
-  }
+const Header = ({cartItems, updateShowCart, searchCart}) => {
+  
+  const cartSize = cartItems.length > 0 ? cartItems.map(item => item.cartCount).reduce((prev, next) => prev + next) : 0;
+  
+  return (
+    <nav>
+        <ul className="primary-nav">
+            <li className="left" onClick={() => updateShowCart(false)}><FontAwesomeIcon icon={faStar} className="logo" size="2x" /></li>
+            
+            <li className="right"> <Search searchCart={searchCart} /> </li>
+            <li className="right" onClick={() => updateShowCart(true)}><FontAwesomeIcon icon={faShoppingCart} size="2x" className="badge" /><span className="cart-size">{cartSize}</span></li>
+        </ul>
+    </nav>
+  )
 }
 
 export default Header;

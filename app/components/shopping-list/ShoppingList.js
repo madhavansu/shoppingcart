@@ -5,19 +5,12 @@ import ShoppingListItem from '../shopping-list-item/ShoppingListItem';
 /* 
 *   Created by Madhavan 22/03/2020
 **/
-class ShoppingList extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const listItems = this.props.listItems;
-
-        return  <ul className="shopping-list">
-                    {listItems.map((item, i) => <ShoppingListItem addToCart={() => this.props.addToCart(item)} item={item} i={i} key={i}/>)}
-                </ul>;
-    }
+const ShoppingList = ({listItems, addToCart}) => {
+    return (
+        <ul className="shopping-list">
+            {listItems.map((item, i) => <ShoppingListItem addToCart={() => addToCart(item)} item={item} i={i} key={i}/>)}
+        </ul>
+    )
 }
 
 export default ShoppingList;

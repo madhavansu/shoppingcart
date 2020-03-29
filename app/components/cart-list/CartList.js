@@ -7,38 +7,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* 
 *   Created by Madhavan 22/03/2020
 **/
-class CartList extends React.Component {
+const CartList = ({cartItems, updateShowCart, removeFromCart, increaseCartCount, decreaseCartCount}) => {
 
-    constructor(props) {
-        super(props);
-    }
+    const cartValue = cartItems.length > 0 ? cartItems.map(item => item.price * item.cartCount).reduce((prev, next) => prev + next) : 0;
+    const cartDiscountValue = cartItems.length > 0 ?  cartItems.map(item => item.discountedPrice * item.cartCount).reduce((prev, next) => prev + next) : 0;
 
-    render() {
-        const cartItems = this.props.cartItems;
-        const cartValue = cartItems.length > 0 ? cartItems.map(item => item.price * item.cartCount).reduce((prev, next) => prev + next) : 0;
-        const cartDiscountValue = cartItems.length > 0 ?  cartItems.map(item => item.discountedPrice * item.cartCount).reduce((prev, next) => prev + next) : 0;
-
-        return  <div>
-                    <div className="cart">
-                        <ul className="cart-list">
-                            { cartItems.length > 0 ? cartItems.map((item, i) => <CartListItem key={i} increaseCartCount={() => this.props.increaseCartCount(item)} decreaseCartCount={() => this.props.decreaseCartCount(item)} item={item} i={i} removeFromCart={() => this.props.removeFromCart(item)} /> ) : <li>No cart items available</li>}
-                        </ul>
-                        <div className="price-details">
-                            <div>PRICE DETAILS</div>
-                            <div>
-                                <span>Price ({cartItems.length} item{cartItems.length > 1? "s" : null}) </span><span>:</span><span>{cartValue}</span>
-                            </div>
-                            <div>
-                                <span>Discount</span><span>:</span><span>{cartValue - cartDiscountValue}</span>
-                            </div>
-                            <div>
-                                <span>Total Payable</span><span></span><span>{cartDiscountValue}</span>
-                            </div>
-                        </div>
+    return  (
+        <div>
+            <div className="cart">
+                <ul className="cart-list">
+                    { cartItems.length > 0 ? cartItems.map((item, i) => <CartListItem key={i} increaseCartCount={() => increaseCartCount(item)} decreaseCartCount={() => decreaseCartCount(item)} item={item} i={i} removeFromCart={() => removeFromCart(item)} /> ) : <li>No cart items available</li>}
+                </ul>
+                <div className="price-details">
+                    <div>PRICE DETAILS</div>
+                    <div>
+                        <span>Price ({cartItems.length} item{cartItems.length > 1? "s" : null}) </span><span>:</span><span>{cartValue}</span>
                     </div>
-                    <button onClick={() => this.props.updateShowCart(false)}>Continue Shopping</button>
-                </div>;
-    }
+                    <div>
+                        <span>Discount</span><span>:</span><span>{cartValue - cartDiscountValue}</span>
+                    </div>
+                    <div>
+                        <span>Total Payable</span><span></span><span>{cartDiscountValue}</span>
+                    </div>
+                </div>
+            </div>
+            <button onClick={() => updateShowCart(false)}>Continue Shopping</button>
+        </div>
+    );
 }
 
 export default CartList;
