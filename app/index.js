@@ -13,7 +13,7 @@ const SERVICE_API = 'https://api.myjson.com/bins/qzuzi';
 /* 
 * Created by Madhavan 21/03/2020
 **/
-class AdobeShopping extends React.Component {
+class ShoppingCart extends React.Component {
 
     constructor(props) {
         super(props);
@@ -208,4 +208,4 @@ class AdobeShopping extends React.Component {
     }
 }
 
-ReactDOM.render(<AdobeShopping />, document.getElementById('root'));
+ReactDOM.render(<ShoppingCart />, document.getElementById('root'));
