@@ -1,6 +1,7 @@
 # Shopping Cart Application
 
 Application performs the functionality of shopping cart behaviors 
+[Live Demo](https://madhavansu.github.io/shoppingcart/)
 
 @author: Madhavan Subramanian
 @email: madhavan.manian@gmail.com
@@ -56,6 +57,8 @@ Application performs the functionality of shopping cart behaviors
     $ npm run build
 
     open http://localhost:8080/ in the browser
+    
+    Note: For live refresh replace ./dist/bundle with ./bundle from index.html for both css and Javascript, this will be fixed in next release.  
 
 ## Simple build for production
 
