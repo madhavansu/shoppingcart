@@ -1,10 +1,10 @@
 # Shopping Cart Application
 
-Application performs the functionality of shopping cart behaviors 
-[Live Demo](https://madhavansu.github.io/shoppingcart/)
+    Application performs the functionality of shopping cart behaviors 
+    [Live Demo](https://madhavansu.github.io/shoppingcart/)
 
-@author: Madhavan Subramanian
-@email: madhavan.manian@gmail.com
+    Author: Madhavan Subramanian
+    Email: madhavan.manian@gmail.com
 
 ## Implemented Features
     Add to cart, 
@@ -29,14 +29,15 @@ Application performs the functionality of shopping cart behaviors
     Implemented the cashing mechanism to maintain the records locally for the session. 
         there will be only once the api will be called, to re-fetch from endpoint close and reopen the browser tab.
     Used SASS, SCSS for styling,
-    Implemented es6 feature such as Arrow function, filter, map, some, let const, spread[...] operator etc.,
+    Implemented es6 feature such as Arrow function, filter, map, some, let, const, spread[...] operator etc.,
     Used CSS3 styling,
     Used media queries for responsiveness,
-    Used Webpack for building and bundling,
+    Used Webpack for bundling and packaging the resources,
+    Used Babel for transpiling the es6 into es5.
     Javascript and CSS minifying using loaders and bundlers,
     Used Verdana font locally,
     Used Fontawesome for icons,
-    Used react for separation of modules and components,
+    Used react for to create scalable component development and state management,
     Used bundlers for bundling CSS, JS, fonts and images,
 
 ## Components
@@ -62,4 +63,6 @@ Application performs the functionality of shopping cart behaviors
 
 ## Simple build for production
 
-    $ build-prod
+    $ npm run build-prod
+
+    
