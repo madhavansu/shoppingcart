@@ -1,10 +1,12 @@
 # Shopping Cart Application
 
     Application performs the functionality of shopping cart behaviors 
-    [Live Demo](https://madhavansu.github.io/shoppingcart/)
 
     Author: Madhavan Subramanian
     Email: madhavan.manian@gmail.com
+
+## Live Demo
+### [https://madhavansu.github.io/shoppingcart/](https://madhavansu.github.io/shoppingcart/)
 
 ## Implemented Features
     Add to cart, 
