@@ -67,4 +67,16 @@
 
     $ npm run build-prod
 
-    
+## Useful  links for this project
+
+    https://appdividend.com/2017/03/28/beginners-guide-to-setup-es6-development-environment/
+
+    https://dev.to/pixelgoo/how-to-configure-webpack-from-scratch-for-a-basic-website-46a5
+
+    https://jsbin.com/zarakid/edit?html,css,js,output
+
+    https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
+
+    http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32
+
+    https://www.w3schools.com/css/css_rwd_mediaqueries.asp    
